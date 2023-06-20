@@ -1,33 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import Controls from './store/Controls';
 
 class App extends Component {
-  add = () => {
-    this.props.dispatch({ type: "INCREMENT" });
-  };
-
-  minus = () => {
-    this.props.dispatch({ type: "DECREMENT" });
-  };
-
-  reset = () => {
-    this.props.dispatch({ type: "RESET" });
-  };
 
   render() {
-    const { count } = this.props;
+    const { count,name } = this.props;
     return (
       <>
-        <h1>The count is {count}</h1>
-        <buttton onClick={this.add}>Add</buttton>
-        <buttton onClick={this.minus}>Minus</buttton>
-        <buttton onClick={this.reset}>Reset</buttton>
+        <h1>{name} {count}
+        
+        </h1>
+        <Controls/>
+        
       </>
     );
   }
 }
 function mapStateToProps(state) {
-  return { count: state.count };
+  return { count: state.count, name: state.name };
 }
  
 export default connect(mapStateToProps)(App);
